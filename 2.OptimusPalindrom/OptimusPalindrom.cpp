@@ -1,19 +1,15 @@
 #include <iostream>
 using namespace std;
 
-
-bool isPalindrome(int num) { // Функция для проверки, является ли число палиндромом
+bool isPalindrome(int num) { // Function to check if a number is a palindrome
     int originalNumber = num;
     int reversedNumber = 0;
 
-    
-    while (num > 0) { // Разворачиваем число
+    while (num > 0) { // Reverse the number
         reversedNumber = reversedNumber * 10 + num % 10;
         num = num / 10;
     }
-
-    
-    return originalNumber == reversedNumber;  // Сравниваем оригинальное число с перевёрнутым
+    return originalNumber == reversedNumber;  // Compare the original number with the reversed one
 }
 
 int main() {
@@ -22,22 +18,17 @@ int main() {
 
     cout << "The largest palindrome number that is the result of multiplying two three-digit numbers:" << endl;
 
-   
-    for (int i = 999; i >= 100; i--) {  // Начинаем с самых больших трёхзначных чисел
-        for (int j = i; j >= 100; j--) { // Внутренний цикл также идёт вниз
+    for (int i = 999; i >= 100; i--) {  // Start with the largest three-digit numbers
+        for (int j = i; j >= 100; j--) { // The inner loop also goes downwards
             int number = i * j;
 
-         
-            if (isPalindrome(number) && number > largestPalindrome) {     // Проверяем, является ли произведение палиндромом
+            if (isPalindrome(number) && number > largestPalindrome) {     // Check if the product is a palindrome
                 largestPalindrome = number;
                 multiplicand = i;
                 multiplier = j;
             }
         }
     }
-
-    
-    cout << "The largest palindrome is: " << largestPalindrome << " (from " << multiplicand << " * " << multiplier << ")" << endl; // Выводим результат
-
+    cout << "The largest palindrome is: " << largestPalindrome << " (from " << multiplicand << " * " << multiplier << ")" << endl; // Output the result
     return 0;
 }

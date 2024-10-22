@@ -4,31 +4,31 @@
 
 using namespace std;
 
-// Функция для нахождения всех простых чисел до числа n
+// Function to find all prime numbers up to number n
 vector<int> sieveOfEratosthenes(int n) {
-    if (n < 2) return vector<int>(); // Если n меньше 2, простых чисел нет
+    if (n < 2) return vector<int>(); // If n is less than 2, there are no prime numbers
 
-    // Массив для нечетных чисел, размером (n + 1) / 2
+    // Array for odd numbers, size (n + 1) / 2
     vector<bool> isPrime((n + 1) / 2, true);
     vector<int> primes;
 
-    // Добавляем 2 в список простых чисел, так как это единственное четное простое число
+    // Adding 2 to the list of prime numbers since it's the only even prime number
     primes.push_back(2);
 
-    // Цикл для нечетных чисел начиная с 3 (только нечетные числа)
+    // Loop for odd numbers starting from 3 (only odd numbers)
     for (int i = 3; i * i <= n; i += 2) {
-        if (isPrime[i / 2]) { // Проверяем только нечетные числа
-            // Помечаем кратные i числа как составные
+        if (isPrime[i / 2]) { // Check only odd numbers
+            // Mark multiples of i as composite
             for (int j = i * i; j <= n; j += 2 * i) {
-                isPrime[j / 2] = false; // Помечаем как составное
+                isPrime[j / 2] = false; // Mark as composite
             }
         }
     }
 
-    // Собираем все простые числа
+    // Collect all prime numbers
     for (int i = 1; 2 * i + 1 <= n; ++i) {
         if (isPrime[i]) {
-            primes.push_back(2 * i + 1); // Восстанавливаем нечетные числа
+            primes.push_back(2 * i + 1); // Restoring odd numbers
         }
     }
 
@@ -40,10 +40,10 @@ int main() {
     cout << "Enter a number within the range in which you want to find all prime numbers: ";
     cin >> x;
 
-    // Находим все простые числа до x
+    // Find all prime numbers up to x
     vector<int> primes = sieveOfEratosthenes(x);
 
-    // Выводим найденные простые числа
+    // Output the found prime numbers
     cout << "Prime numbers up to " << x << " are:" << endl;
     for (size_t i = 0; i < primes.size(); ++i) {
     cout << primes[i] << " ";
@@ -51,16 +51,16 @@ int main() {
  
     cout << endl << endl;
 
-    // Спрашиваем у пользователя, какое по счету простое число он хочет получить
+    // Ask the user which prime number (ordinal) they want to get
     int target;
     cout << "Enter the ordinal number of the prime you want to get: ";
     cin >> target;
 
-    // Для поиска большого по счету простого числа увеличиваем предел для решета
-    int limit = 2000000; // Примерная граница для поиска 10001-го простого числа
+    // To find a large ordinal prime number, increase the limit for the sieve
+    int limit = 2000000; // Approximate limit for finding the 10001st prime number
     vector<int> largePrimes = sieveOfEratosthenes(limit);
 
-    // Проверяем, есть ли запрошенное простое число
+    // Check if the requested prime number exists
     if (target - 1 < largePrimes.size()) {
         cout << "The " << target << "th prime number is: " << largePrimes[target - 1] << endl;
     } else {

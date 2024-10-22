@@ -4,13 +4,13 @@ using namespace std;
 long long largestPrimeFactor(long long n) {
     long long largestFactor = 1;
 
-    // Удаляем все множители двойки
+    // Remove all factors of two
     while (n % 2 == 0) {
         largestFactor = 2;
         n /= 2;
     }
 
-    // Проверяем нечетные множители
+    // Check odd factors
     for (long long i = 3; i * i <= n; i += 2) {
         while (n % i == 0) {
             largestFactor = i;
@@ -18,12 +18,11 @@ long long largestPrimeFactor(long long n) {
         }
     }
 
-    // Если n больше 2, то это и есть самый большой простой множитель
+    // If n is greater than 2, it is the largest prime factor
     if (n > largestFactor) {
         return n; } else 
          return largestFactor;
     
-
     return largestFactor;
 }
 
