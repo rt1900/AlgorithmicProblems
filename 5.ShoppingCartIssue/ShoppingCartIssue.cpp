@@ -14,7 +14,7 @@ int main(){
     cout<<"You have a truck with a load capacity of 250 kg\n"<<endl;
     cout<<"How many items do you have? Enter the quantity: "<<endl;
     cin>>quantity;
-    cout<<"Enter the names of all products: "<<endl;
+    cout<<"Enter the names of all items: "<<endl;
     vector <string> typeOfProduct = products(quantity);
     //#2
     cout<<"Enter the prices for each product (enter a whole number): "<<endl;
