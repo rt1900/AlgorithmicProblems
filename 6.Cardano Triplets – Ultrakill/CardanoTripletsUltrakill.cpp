@@ -12,7 +12,8 @@ int main() {
     
     for (int a = 1; a <= limit; ++a) {      // Outer loop to iterate over values of a
         for (int b = 1; b <= limit - a; ++b) {        // Inner loop to iterate over values of b
-            for (int c = 1; c <= limit - a - b; ++c) {      // Внутренний цикл для перебора значений c
+            for (int c = 1; c <= limit - a - b; ++c) {      // Inner loop for iterating over values of "c"
+            
                 if (сardanoTriplet(a, b, c)) {                 // Check if it is a Cardano triplet
                     count++; 
                 }
