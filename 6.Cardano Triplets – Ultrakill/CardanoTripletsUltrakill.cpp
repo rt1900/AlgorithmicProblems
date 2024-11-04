@@ -7,12 +7,12 @@ bool сardanoTriplet(int a, int b, int c);
 int main() {
     cout<<"hello world"<<endl;
     int count = 0;
-    long long limit = 1500;
+    long long limit = 1000;
 
     
     for (int a = 1; a <= limit; ++a) {      // Outer loop to iterate over values of a
-        for (int b = 1; a + b <= limit; ++b) {        // Inner loop to iterate over values of b
-            for (int c = 1; a + b + c <= limit; ++c) {      // Внутренний цикл для перебора значений c
+        for (int b = 1; b <= limit - a; ++b) {        // Inner loop to iterate over values of b
+            for (int c = 1; c <= limit - a - b; ++c) {      // Внутренний цикл для перебора значений c
                 if (сardanoTriplet(a, b, c)) {                 // Check if it is a Cardano triplet
                     count++; 
                 }
@@ -34,10 +34,10 @@ int main() {
     return 0;
 }
 
-
-
 bool сardanoTriplet(int a, int b, int c) { // Function to check if (a, b, c) is a Cardano triplet
     double termFirst = cbrt(a + b * sqrt(c));
     double termSecond = cbrt(a - b * sqrt(c));
-    return (termFirst + termSecond) == 1.0;
+    double sum = termFirst + termSecond;
+    double epsilon = 1e-8;
+    return fabs(sum - 1.0) < epsilon;
 }
