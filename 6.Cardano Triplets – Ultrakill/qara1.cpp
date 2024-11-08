@@ -12,7 +12,7 @@ int main() {
 
     long long count = 0;
     const long long limit = 200000;
-    
+
     for (long long a = 1; a <= limit; ++a) {
         long long N = 8 * a * a * a + 15 * a * a + 6 * a - 1;
 
