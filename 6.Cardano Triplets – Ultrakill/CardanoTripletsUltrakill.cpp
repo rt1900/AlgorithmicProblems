@@ -7,7 +7,7 @@ bool сardanoTriplet(int a, int b, int c);
 int main() {
     cout<<"hello world"<<endl;
     int count = 0;
-    long long limit = 1000;
+    long long limit = 5000;
 
     
     for (int a = 1; a <= limit; ++a) {      // Outer loop to iterate over values of a
